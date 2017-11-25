@@ -1,0 +1,89 @@
+    <script type="text/javascript">
+/*
+        //cordova.plugins.backgroundMode.enable();
+        var mins = 0;
+
+
+            $.get( "http://www.city-ex.cl/chv/site/getminutos" )
+            .done(function( data ) {
+            mins = parseInt(data);
+            });
+
+
+        function showPosition(position) {
+        $('#cx').val( position.coords.latitude);
+        $('#cy').val( position.coords.longitude);
+
+        }
+
+        function getgeo(count){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            //  alert(params);
+            if( ($('#cx').val()) && ($('#cy').val()) && ($('#id_driver').val()) )
+            $.post( "http://www.city-ex.cl/chv/site/guardarcoords", { coordx: $('#cx').val(), coordy: $('#cy').val(), driver: $('#id_driver').val() } );
+        } else {
+            console.log( "Geolocation is not supported by this browser.");
+        }
+        if (count < 2)
+        if( ($('#cx').val()=='') || ($('#cy').val()=='') || ($('#id_driver').val()=='') )
+        setTimeout(getgeo, 1000, count++);
+        else
+        setTimeout(getgeo, mins*1000, count++);
+        }
+
+        $(function() {
+
+            getgeo(0);
+        });*/
+
+        </script>
+	<div class="card top-space">
+		<div class="p+">
+			<h1>{{title}}</h1>
+			<div flex-container ="row">
+				<div flex-item>
+
+					<lx-text-field fixed-label="true" icon="clock">
+						<input type ="text" ng-model="serv.hora_ini">
+					</lx-text-field>
+
+
+							
+					<lx-text-field label="Km inicio" fixed-label="true" icon="car">
+						<input type ="number"  ng-model="serv.km_inicio">
+						</lx-text-field>
+
+					<lx-text-field label="Lugar Salida" fixed-label="true" icon="map-marker">
+						<input type ="text" ng-model="serv.lugar_salida">
+						</lx-text-field>
+
+						
+					<lx-text-field fixed-label="true" icon="clock">
+						<input type ="text" ng-model="serv.hora_ter">
+					</lx-text-field>
+					
+					<lx-text-field label="Km termino" fixed-label="true" icon="car">
+						<input type ="number"  ng-model="serv.km_termino">
+						</lx-text-field>
+
+					<lx-text-field label="Lugar Llegada" fixed-label="true" icon="map-marker">
+						<input type ="text" ng-model="serv.lugar_llegada">
+						</lx-text-field>
+
+					<lx-text-field label="Nro pasajeros" fixed-label="true" icon="account-multiple-plus">
+						<input type ="number"  ng-model="serv.npas">
+						<input type="hidden" id="id_driver" value="{{driver.driver}}">
+						<input type="hidden" id="cx" value="">
+						<input type="hidden" id="cy" value="">
+						</lx-text-field>
+
+					</div>
+				</div>
+					
+		</div>
+	</div>
+
+<button class="btn btn--xl btn--blue btn--fab ng-scope" style="position: fixed; right: 3%; bottom: 3%; float: right;">
+<i class="icon icon--xl icon--blue icon--circled mdi mdi-content-save" ng-click="guardarservbus()"></i>
+</button>

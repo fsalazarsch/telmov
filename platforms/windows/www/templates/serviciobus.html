@@ -1,0 +1,78 @@
+	<div class="card top-space">
+		<div class="p+">
+			<h1>{{title}}</h1>
+			<div flex-container ="row">
+				<div flex-item>
+
+					<lx-text-field fixed-label="true" icon="clock">
+						<input type ="text" ng-model="serv.hora_ini">
+					</lx-text-field>
+
+			<!--table>
+			<tr>
+				<td>
+			<lx-text-field label="Hi" fixed-label="true" icon="clock">
+						<input type="number" maxlength="2" min=0 max=23 ng-model="serv.hora_inihrs" ng-change = "cambiar_hora()" class= "hrs">
+						</lx-text-field>
+				</td>
+				<td>:</td>
+				<td>
+					
+			<lx-text-field label="Mi" fixed-label="true">
+						<input type="number" maxlength="2" min=0 max=59 ng-model="serv.hora_inimins">
+						</lx-text-field>
+				</td>
+			</tr>
+			</table-->
+							
+					<lx-text-field label="Km inicio" fixed-label="true" icon="car">
+						<input type ="number"  ng-model="serv.km_inicio">
+						</lx-text-field>
+
+					<lx-text-field label="Lugar Salida" fixed-label="true" icon="map-marker">
+						<input type ="text" ng-model="serv.lugar_salida">
+						</lx-text-field>
+
+			<!--table>
+			<tr>
+				<td>
+			<lx-text-field label="Ht" fixed-label="true" icon="clock">
+						<input type="number" maxlength="2" min=0 max=23 ng-model="serv.hora_terhrs" ng-change = "cambiar_hora()" class= "hrs">
+						</lx-text-field>
+				</td>
+				<td>:</td>
+				<td>
+					
+			<lx-text-field label="Mt" fixed-label="true">
+						<input type="number" maxlength="2" min=0 max=59 ng-model="serv.hora_termins">
+						</lx-text-field>
+				</td>
+			</tr>
+			</table-->
+
+						
+					<lx-text-field fixed-label="true" icon="clock">
+						<input type ="text" ng-model="serv.hora_ter">
+					</lx-text-field>
+					
+					<lx-text-field label="Km termino" fixed-label="true" icon="car">
+						<input type ="number"  ng-model="serv.km_termino">
+						</lx-text-field>
+
+					<lx-text-field label="Lugar Llegada" fixed-label="true" icon="map-marker">
+						<input type ="text" ng-model="serv.lugar_llegada">
+						</lx-text-field>
+
+					<lx-text-field label="Nro pasajeros" fixed-label="true" icon="account-multiple-plus">
+						<input type ="number"  ng-model="serv.npas">
+						</lx-text-field>
+
+					</div>
+				</div>
+					
+		</div>
+	</div>
+
+<button class="btn btn--xl btn--blue btn--fab ng-scope" style="position: fixed; right: 3%; bottom: 3%; float: right;">
+<i class="icon icon--xl icon--blue icon--circled mdi mdi-content-save" ng-click="guardarservbus()"></i>
+</button>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="App" lang="es">
+	<meta charset="UTF-8">
+<head>
+	<title>Posts App</title>
+	<link rel="stylesheet" type="text/css" href="css/materialdesignicons.css">
+	<link rel="stylesheet" type="text/css" href="css/lumx.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/time-picker-lumx.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
+	<!--
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script--
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<!--script src="https://code.angularjs.org/1.4.0-beta.5/angular-route.min.js"></script>
+	
+	<script src="https://code.angularjs.org/1.5.0-rc.0/angular-resource.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
+	-->
+	
+	<script src="libs/jquery-latest.min.js"></script>
+	<script src="libs/angular.min.js"></script>
+	<script src="libs/angular-route.min.js"></script>
+	
+	<script src="libs/angular-resource.js"></script>
+	
+	<script src="libs/velocity.min.js"></script>
+	<script src="libs/moment-with-locales.min.js"></script>
+	<script src="js/lumx.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/services.js"></script>
+	<script src="js/controllers.js"></script>
+
+	
+	<script type="text/javascript">
+
+		//cordova.plugins.backgroundMode.enable();
+		var mins = 0;
+
+			$.get( "http://www.city-ex.cl/chv/site/getminutos" )
+  			.done(function( data ) {
+    		mins = parseInt(data);
+    		});
+
+
+		function showPosition(position) {
+		$.post( "http://www.city-ex.cl/chv/site/guardarcoords", { coordx: position.coords.latitude, coordy: position.coords.longitude } );
+    	alert("Lat: " + position.coords.latitude + " -- Long: " + position.coords.longitude); 
+		}
+
+		function getgeo(){
+    	if (navigator.geolocation) {
+        	navigator.geolocation.getCurrentPosition(showPosition);
+    	} else {
+        	console.log( "Geolocation is not supported by this browser.");
+    	}
+
+	    setTimeout(getgeo, mins*1000);
+		}
+
+		$(function() {
+			getgeo();
+		});
+
+        
+    </script>
+</head>
+<body>
+	<nav>
+	<div class="bgc-green-900 tc-white" flex-container="row" flex-align="center center">
+		<div flex-item="4">
+						<br>
+			<table style="margin: auto;">
+				<tr>
+				<td style="padding-right: 50px; width: 50%;"><img style="width: 100px;" src="./imgs/logocity.png" /></td>
+				<td>Sistema de transportes</td>
+				</tr>
+				</table>
+			<br>
+			
+		</div>
+
+		<!--div flex-item="1">
+			<a href="#/posts/new">Crear post</a>
+		</div-->
+		
+	</div>
+	</nav>
+	<div flex-container="row" flex-align="center">
+	<div ng-view flex-item="9"></div>
+	</div>
+</body>
+</html>

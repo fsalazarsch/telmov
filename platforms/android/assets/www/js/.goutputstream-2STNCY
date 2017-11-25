@@ -1,0 +1,71 @@
+angular.module("App")
+
+.controller("MainController", function($scope, $resource, $routeParams, DriverResource, $resource, $location, LxNotificationService){
+	
+	
+	$scope.drivers = DriverResource.query();
+	$scope.title= "Login";
+	
+
+	$scope.verificar = function(){
+
+		
+		$scope.drivers=[];
+
+		x = DriverResource.query(function (response) 
+		{
+		    angular.forEach(response, function (item) 
+		    {
+				
+		    	if(item.Nombre == $scope.selects.driver)
+		    	{
+		            
+		            alert(item.id_driver);
+		    	}
+		    	
+		    });
+		});
+
+		$scope.selects = { driver: undefined};
+				alert($scope.selects.driver);
+
+
+			    //DriverResource.get({ id: $scope.driver.id }, function(data){
+				//$scope.drivercompare = data;
+				/*if ($scope.drivercompare.id == $scope.driver.id){
+					
+					$location.path("/user/"+$scope.driver.id);					
+				}else
+				{
+				
+					LxNotificationService.error('Error');
+					
+				}*/
+			//});
+	}
+
+
+	})
+.controller("PostController", function($scope, PostResource, $routeParams, $location){
+	$scope.title = "Editar Post";
+	$scope.post = PostResource.get({id: $routeParams.id});
+		$scope.savePost = function(){
+			PostResource.update({id: $scope.post.id}, {data : $scope.post}, function(data){
+				console.log(data);
+				$location.path("/post/"+$scope.post.id);
+				});
+			}
+	})
+.controller("NewPostController", function($scope, PostResource, $location){
+	
+	$scope.post = {};
+	$scope.title= "Crear Post";
+	$scope.savePost = function(){
+			PostResource.save({data : $scope.post}, function(data){
+				console.log(data);
+				$location.path("/");
+				});
+				
+		}
+	
+	});

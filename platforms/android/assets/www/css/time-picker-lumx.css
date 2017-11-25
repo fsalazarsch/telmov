@@ -1,0 +1,177 @@
+///*------------------------------------*\
+ //    #OBJECTS-TIME-PICKER
+ //\*------------------------------------*/
+ 
+ // Lx time base styles
+ .lx-time {
+     position: relative;
+ }
+ 
+ .lx-time--fixed-label {
+ 
+     .text-field {
+         padding-top: 8px;
+     }
+ 
+     .text-field--is-active {
+         .text-field__label {
+             display: none;
+         }
+     }
+ 
+         .text-field__label {
+             transform :none;
+         }
+ }
+ 
+ .lx-time--with-icon {
+     margin-left:  64px;
+ }
+ 
+ // Time filter
+ .lx-time-filter {
+     position :fixed;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 0;
+     z-index: 999;
+     background-color: rgba(0,0,0,0.6);
+     opacity: 0;
+     transition-property : opacity;
+	 transition-duration : 0.6s;
+     //@include transition-timing-function($ease-out-quint);
+ }
+ 
+ .lx-time-filter--is-shown {
+     opacity: 1;
+ }
+ 
+ // Time input
+ .lx-time__input-wrapper {
+     position: relative;
+ 
+     &:hover {
+         .lx-date__clear {
+             opacity: 1;
+         }
+     }
+ }
+ 
+ .lx-time-input {
+	padding-top: 0px;
+     &,
+     input {
+         cursor: pointer !important;
+     }
+ }
+ 
+ .lx-time__clear {
+     display: block;
+		position: absolute;
+		top: null;
+		left:  0;
+		width: 8px;
+		height: null;
+     opacity: 0;
+     cursor: pointer;
+     line-height: 32px;
+     transition-property : opacity, color;
+     transition-duration :.2s;
+ 
+     &:hover {
+         color: $red-500;
+     }
+ }
+ 
+ // Time picker base styles
+ .lx-time-picker {
+     display: none;
+     position :fixed;
+		top: 30px;
+		left: null;
+		width: null;
+		height: 50%;
+     z-index: 1000;
+     width: 280px;
+     margin-left: -140px;
+     background-color: #FFFFFF;
+     opacity: 0;
+     //@include z-depth(3);
+     transform: translateY(-50px);
+     transition-property: opacity, transform;
+     transition-duration: 0.6s;
+     //@include transition-timing-function($ease-out-quint);
+ }
+ 
+ .lx-time-picker--is-shown {
+ //transformar en lightbox
+ 			display: none;
+			position: fixed;
+			top: 25%;
+			left: 25%;
+			width: 50%;
+			    border-radius: 2px;
+				background-color: #FFF;
+				overflow: hidden;
+				box-shadow: 0 1px 2px rgba(0,0,0,.3);
+
+			z-index:1002;
+			overflow: auto;
+     opacity: 1;
+     transform :translateY(0);
+ }
+ 
+ .lx-time-picker__header {
+     position: absolute;
+		top: 0;
+		left: 0;
+		width: null;
+		height: 0;
+ }
+ 
+     .lx-time-picker__now {
+         background-color: #00796B;
+ 
+         span {
+             display: block;
+             font-size :14px;
+             text-align: center;
+             text-transform: capitalize;
+             font-weight: bold;
+             line-height: 32px;
+             color: #FFFFFF;
+         }
+     }
+ 
+ .lx-time-picker__current-time {
+ 	text-align: center;
+ 	margin-top: 2rem;
+ }
+ 	.lx-time-picker__specator {
+ 		font-size :48px;
+ 		display: inline-block;
+ 		font-weight: 600;
+ 		vertical-align: 45%;
+ 		color: #9E9E9E;
+ 	}
+ 	.lx-time-picker__current-hour,
+ 	.lx-time-picker__current-minute {
+ 		display: inline-block;
+ 		width: 30%;
+ 	}
+ 
+     // Time picker actions
+     .lx-time-picker__actions {
+         padding:  8px;
+         border-top: 1px solid $black-4;
+         text-align: center;
+     }
+ 
+     .lx-time-picker__manual-input {
+         background: transparent;
+         outline: none;
+         border: 0 none;
+         width: 3rem;
+         text-align: center;
+     }

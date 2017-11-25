@@ -1,0 +1,39 @@
+<center>
+<form>
+	
+			<div class="card top-space" style="width: 90%;">
+			<h1>{{title}}</h1>
+			<div flex-container="row">
+				<div flex-container="column"  style="width: 100%;">
+					<div flex-item>
+						<lx-text-field label="Nombre" fixed-label="true" icon="account">
+							<input type="text" ng-model="user.nombre">
+          	  			</lx-text-field>
+						
+						
+						<lx-select placeholder="Seleccione centro de costo" choices="centrocostos" ng-model="selects.centrocosto"  min-length="0" allow-clear="true">
+						<lx-select-selected>
+							{{ $selected.desc_programa }}
+						</lx-select-selected>
+
+						<lx-select-choices>
+							{{ $choice.desc_programa }}
+						</lx-select-choices>
+						</lx-select>
+						
+						<div class="card top-space">
+							<lx-date-picker class="lx-date-picker__current-date" model="fechap3" label="Seleccione fecha" locale="es" fixed-label="true" icon="calendar" ></lx-date-picker>
+						</div>
+						</div>
+						<div class="card__actions">
+							<button ng-click="useradd()" type="button" class="btn btn--blue btn--l btn--raised">
+								Guardar
+							</button>
+
+						</div>
+				</div>
+			</div>
+		</div>
+
+</form>
+</center>

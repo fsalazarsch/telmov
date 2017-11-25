@@ -1,0 +1,212 @@
+    <script type="text/javascript">
+
+        //cordova.plugins.backgroundMode.enable();
+       /* var mins = 0;
+
+
+            $.get( "http://www.city-ex.cl/chv/site/getminutos" )
+            .done(function( data ) {
+            mins = parseInt(data);
+            });
+
+
+        function showPosition(position) {
+        $('#cx').val( position.coords.latitude);
+        $('#cy').val( position.coords.longitude);
+
+        }
+
+        function getgeo(count){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            //  alert(params);
+            if( ($('#cx').val()) && ($('#cy').val()) && ($('#id_driver').val()) )
+            $.post( "http://www.city-ex.cl/chv/site/guardarcoords", { coordx: $('#cx').val(), coordy: $('#cy').val(), driver: $('#id_driver').val() } );
+        } else {
+            console.log( "Geolocation is not supported by this browser.");
+        }
+        if (count < 2)
+        if( ($('#cx').val()=='') || ($('#cy').val()=='') || ($('#id_driver').val()=='') )
+        setTimeout(getgeo, 1000, count++);
+        else
+        setTimeout(getgeo, mins*1000, count++);
+        }
+
+        $(function() {
+
+            getgeo(0);
+        });*/
+
+        </script>
+<script>
+var i=0;
+var innhtml= '';
+for(i=0;i<10;i++){
+	innhtml += '<tr><td>';
+	innhtml +='<lx-text-field fixed-label="true">';
+	innhtml +='<input type="text" ng-model="folio.hr_inicio['+i+']"></lx-text-field>';
+	innhtml +='</td><td>';
+	innhtml +='<lx-text-field fixed-label="true">';
+	//innhtml +='<lx-time-picker model="folio.hr_termino['+i+']"></lx-text-field>';
+	innhtml +='<input type="text" ng-model="folio.hr_termino['+i+']"></lx-text-field>';
+    innhtml +='</td><td><lx-text-field fixed-label="true">';
+	innhtml +='<input type="number" ng-model="folio.km_inicio['+i+']">';
+	innhtml +='</lx-text-field></td><td><lx-text-field fixed-label="true">';
+	innhtml +='<input type="number" ng-model="folio.km_termino['+i+']">';
+	innhtml +='</lx-text-field></td><td>';
+	//innhtml +='<input type="text" ng-model="folio.pasajero['+i+']">';
+	
+	innhtml +=' <lx-select style="margin-top: 0px;" placeholder="Seleccione nombre" choices="idusers" ng-model="folio.pasajero['+i+']" id="{{cont}}" min-length="0" ng-change= "update('+i+')" model-to-selection="textToObjectMethod(data, callback)" allow-clear="true">';
+    innhtml +='        <lx-select-selected>';
+    innhtml +='            {{ $selected.username }}';
+    innhtml +='       </lx-select-selected>';
+    innhtml +='       <lx-select-choices>';
+    innhtml +='          {{ $choice.username }}';
+    innhtml +='       </lx-select-choices>';
+    innhtml +='    </lx-select>';
+	innhtml +='</td><td><lx-text-field fixed-label="true">';
+	innhtml +='<input type="text" ng-model="folio.lugar_salida['+i+']">';
+
+
+
+	innhtml +='</lx-text-field></td></tr>';
+	}
+
+$('#cuerpo').html(innhtml);
+</script>
+
+<lx-tabs>
+	<lx-tab heading="{{title}}">
+		<center>
+		<div class="card top-space" style="width: 95%;">
+			<div flex-container="row">
+				<div flex-container="column" style="width: 100%;">
+						<span style="line-height: 40px; width:45%">							
+						<i class="icon icon--l icon--flat mdi mdi-view-list"></i>{{folio2.id_servicio}}
+				
+						<span style="line-height: 40px;">
+                            <input type="hidden" id="id_driver" value="{{driver.id_driver}}">
+                            <input type="hidden" id="cx" value="">
+                            <input type="hidden" id="cy" value="">
+							<i class="icon icon--l icon--flat mdi mdi-car"></i>{{driver.Nombre}}
+							</span>
+						</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card top-space" style="width: 95%;">
+    <div class="data-table-container">
+    <table class="data-table" border = 2>
+        <thead>
+            <tr>
+
+                <th width="15%">Hr inicio</th>
+                <th width="15%">Hr termino</th>
+                <th width="10%">Km inicio</th>
+                <th width="10%">Km termino</th>
+                <th width="25%">Pasajero</th>
+                <th width="25%">Lugar salida</th>
+            </tr>
+        </thead>
+
+        <tbody id='cuerpo'>
+			
+        </tbody>
+    </table>
+    </div>
+<div class="radio-group mt++">
+    <span style="color: red"><b>Recuerde ingresar sus GASTOS de estacionamiento, GASTOS de peaje, NUMERO de tags y NUMERO de pasajeros</b></span>
+<div class="data-table-container">
+<table width="100%">
+    <tr>
+        <td style="width:25%; padding: 5px;">
+            
+            <lx-text-field fixed-label="true">
+				<label>Peaje</label>
+                <input type="number" ng-model="folio.peaje" >
+            </lx-text-field>
+        </td>
+        <td style="width:25%; padding: 5px;">
+            <lx-text-field fixed-label="true">
+				<label>Estacionamiento</label>     
+                <input type="number" ng-model="folio.estacionamiento" placeholder= ''>
+            </lx-text-field>
+        </td>
+        <td style="width:25%; padding: 5px;">
+            <lx-text-field fixed-label="true">
+                <label>Tag</label>
+                <input type="number" ng-model="folio.tag" placeholder= ''>
+            </lx-text-field>
+        </td>
+       
+    </tr>
+
+</table>
+</div>
+   <center>
+    <lx-text-field fixed-label="true" style="width:95%">
+        <input placeholder="Observaciones" type="text" ng-model="folio.observacion">
+    </lx-text-field>
+    </center>
+</div>
+
+
+<div class="radio-group mt++">
+<div class="data-table-container">
+<!--table width="100%">
+    <tr>
+        <td style="width:25%; padding: 5px;">
+            <img src="./star.png">
+                <div class="radio-button btn--xl btn--red btn--raised" >
+                    <input type="radio" id="radio1" name="radio2" value="1" class="radio-button__input" ng-model="folio.calidad">
+                    <label for="radio1" class="radio-button__label">Deficiente</label>        
+                </div>
+        </td>
+        <td style="width:25%; padding: 5px;">
+             <div class="radio-button btn--xl btn--orange btn--raised" >
+                <input type="radio" id="radio3" name="radio2" value="2" class="radio-button__input" ng-model="folio.calidad">
+                <label for="radio3" class="radio-button__label">Regular</label> 
+            </div>
+        </td>
+        <td style="width:25%; padding: 5px;">
+             <div class="radio-button btn--xl btn--green btn--raised" >
+                <input type="radio" id="radio4" name="radio2" value="3" class="radio-button__input" ng-model="folio.calidad">
+                <label for="radio4" class="radio-button__label">Bueno</label>
+            </div>
+        </td>
+        <td style="width:25%; padding: 5px;">
+             <div class="radio-button btn--xl btn--blue btn--raised" >
+                <input type="radio" id="radio6" name="radio2" value="4" class="radio-button__input" ng-model="folio.calidad">
+                <label for="radio6" class="radio-button__label">Excelente</label>
+            </div>
+        </td>
+    </tr>
+
+</table-->
+</div>
+    <center>
+    <lx-text-field fixed-label="true" style="width:95%">
+        <input placeholder="Comentarios Evaluacion" type="text" ng-model="folio.desc_calidad">
+    </lx-text-field>
+    </center>
+</div>
+<hr>
+
+        </div>
+
+
+			</div>
+
+	</lx-tab>
+	
+</lx-tabs>
+<button class="btn btn--xl btn--green btn--fab ng-scope" style="position: fixed; right: 15%; bottom: 3%; float: right;">
+<i class="icon icon--xl icon--green icon--circled mdi mdi-account-plus" ng-click="iradduser()"></i>
+</button>
+
+<button class="btn btn--xl btn--blue btn--fab ng-scope" style="position: fixed; right: 3%; bottom: 3%; float: right;">
+<i class="icon icon--xl icon--blue icon--circled mdi mdi-content-save" ng-click="guardarfolio()"></i>
+</button>
+
+<br>

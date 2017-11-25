@@ -1,0 +1,76 @@
+    <script type="text/javascript">
+
+        //cordova.plugins.backgroundMode.enable();
+       /* var mins = 0;
+
+
+            $.get( "http://www.city-ex.cl/chv/site/getminutos" )
+            .done(function( data ) {
+            mins = parseInt(data);
+            });
+
+
+        function showPosition(position) {
+        $('#cx').val( position.coords.latitude);
+        $('#cy').val( position.coords.longitude);
+
+        }
+
+        function getgeo(count){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            //  alert(params);
+            if( ($('#cx').val()) && ($('#cy').val()) && ($('#id_driver').val()) )
+            $.post( "http://www.city-ex.cl/chv/site/guardarcoords", { coordx: $('#cx').val(), coordy: $('#cy').val(), driver: $('#id_driver').val() } );
+        } else {
+            console.log( "Geolocation is not supported by this browser.");
+        }
+        if (count < 2){
+        alert(count);
+        if( ($('#cx').val()=='') || ($('#cy').val()=='') || ($('#id_driver').val()=='') )
+        setTimeout(getgeo, 1000, count++);
+        else
+        setTimeout(getgeo, mins*1000, count++);
+        }
+        }
+
+        $(function() {
+
+            getgeo(0);
+        });
+*/
+        </script>
+
+<form ng-submit="verificar()">
+	<div class="card top-space">
+		<div class="p+">
+			<h1>{{title}}</h1>
+			<span></span>
+			<div flex-container ="row">
+				
+			<lx-select  placeholder="Seleccione nombre conductor" choices="drivers" ng-model="selects.driver"  min-length="0" allow-clear="true">
+            <lx-select-selected>
+                {{ $selected.Nombre }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.Nombre }}
+            </lx-select-choices>
+        </lx-select>
+				</div>
+			<input type="hidden" id="id_driver" value="{{driver}}">
+            <input type="hidden" id="cx" value="">
+            <input type="hidden" id="cy" value="">
+			<div class="card top-space">
+    		<lx-date-picker class="lx-date-picker__current-date" model="fechap3" label="Seleccione fecha" locale="es" fixed-label="true" icon="calendar" ></lx-date-picker>
+    		</div>
+
+			<div class="card__actions">
+				<button type="submit" class="btn btn--blue btn--l btn--raised">
+					Agregar al cierre
+					</button>
+				</div>
+			
+		</div>
+	</div>
+</form>

@@ -1,0 +1,33 @@
+<center>
+<form>
+	
+			<div class="card top-space" style="width: 90%;">
+			<h1>{{title}}</h1>
+			<div flex-container="row">
+
+				<div flex-container="column"  style="width: 100%;">
+					<div flex-item>
+						<lx-text-field label="Nombre" fixed-label="true" icon="account">
+							<input type="text" ng-model="driver.Nombre" ng-disabled = "true">
+          	  			</lx-text-field>
+						<lx-text-field label="Email" fixed-label="true" icon="email">
+							<input type="text" ng-model="driver.Email">
+          	  			</lx-text-field>
+						<lx-text-field label="Patente" fixed-label="true" icon="key">
+							<input type="password" ng-model="driver.passwd">
+          	  			</lx-text-field>
+						<hr>
+						</div>
+						<div class="card__actions">
+							<button ng-click="updateDriver(driver)" type="button" class="btn btn--blue btn--l btn--raised">
+								Guardar
+							</button>
+
+						</div>
+				</div>
+			</div>
+		</div>
+
+</form>
+</center>
+

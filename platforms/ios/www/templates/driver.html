@@ -1,0 +1,147 @@
+<lx-tabs>
+	<lx-tab heading="PERFIL">
+		<div class="card top-space">
+			<div flex-container="row">
+				<div class="card__img card__img--left" style="height: 200px;">
+					<img ng-src={{ruta}} />
+				</div>
+				<div flex-container="column"  style="width: 100%;">
+					<div flex-item>
+						<lx-text-field label="Nombre" fixed-label="true" icon="account">
+							<input type="text" ng-model="driver.Nombre" ng-disabled = "true">
+          	  			</lx-text-field>
+						<lx-text-field label="Email" fixed-label="true" icon="email">
+							<input type="text" ng-model="driver.Email" ng-disabled = "true">
+          	  			</lx-text-field>
+						<lx-text-field label="Patente" fixed-label="true" icon="car">
+							<input type="text" ng-model="pat.patente" ng-disabled = "true">
+          	  			</lx-text-field>
+						
+						</div>
+						<div class="card__actions">
+							<a href="#/driver/edit/{{driver.id_driver}}" class="btn btn--m btn--orange btn--flat" lx-ripple>Editar</a>
+						</div>
+				</div>
+			</div>
+		</div>
+
+	<div class="card top-space">
+			<div flex-container="row"></div>
+			<div class="card__actions">
+							<a  onClick="window.location.reload();" class="btn btn--m btn--blue btn--flat" lx-ripple>Actualizar</a>
+						</div>
+	</div>
+	</lx-tab>
+	
+	<lx-tab heading="SERVICIOS">
+	
+		<div class="lt+">
+			<div class="card top-space">
+    		<lx-date-picker class="lx-date-picker__current-date" model="fechap" label="Seleccione fecha" locale="es" fixed-label="true" icon="calendar" ></lx-date-picker>
+    		</div>
+    	
+    	
+    	
+		<div class="card top-space card__actions" ng-repeat="servicio in servicios | filter:{ 'driver': id , 'cobro': '0' , 'fecha': fechap } :true" >
+			<a href="#/servicio/{{servicio.id_servicio}}">
+				<div flex-container="row">
+				<div flex-container="column" style="width: 100%;">
+					<div flex-item>
+						<b class="fs-headline display-block">
+							{{servicio.id_servicio}}
+							</b>
+						<b class="fs-subhead tc-black-2 display-block">
+							Hora de inicio:  {{servicio.hora_inicio |  limitTo: 5}}
+							</b>
+						<b class="fs-subhead tc-black-2 display-block">
+							Hora de Termino: {{servicio.hora_termino |  limitTo: 5}}
+							</b>
+						<b class="fs-subhead tc-black-2 display-block">
+							Programa:  {{servicio.desc_programa}}
+							</b>
+						</div>
+						<div class="card__actions">
+							<a href="#/servicio/{{servicio.id_servicio}}" class="btn btn--m btn--blue btn--flat" lx-ripple>Ir al servicio</a>
+						</div>
+				</div>
+			</div>	
+			</a>	
+		</div>
+		
+
+		
+		</div>
+	</lx-tab>
+
+	
+	<lx-tab heading="CIERRES">
+		<div class="lt+">
+			<div class="card top-space">
+    		<lx-date-picker class="lx-date-picker__current-date" model="fechap2" label="Seleccione fecha" locale="es" fixed-label="true" icon="calendar" ></lx-date-picker>
+    		</div>
+    		<div class="card top-space">
+				<p ng-show="alerta"><a href="#/user/add/{{driver.id_driver}}" class="btn btn--m btn--green btn--flat" lx-ripple>Agregar usuario</a></p>
+       		</div>
+			<div class="card top-space">
+				<p ng-show="alerta2"><a href="#/driver/add/{{driver.id_driver}}" class="btn btn--m btn--green btn--flat" lx-ripple>Agregar conductor</a></p>
+    		</div>
+    	
+		<div class="card top-space card__actions" ng-repeat="folio2 in folios2 | filter:{ 'driver': id, 'fecha': fechap2 } :true" >
+			<a href="#/cierre/{{folio2.id_servicio}}">
+				<div flex-container="row">
+				<div flex-container="column" style="width: 100%;">
+					<div flex-item>
+						<b class="fs-headline display-block">
+							{{folio2.id_servicio}}
+							</b>
+						<b class="fs-subhead tc-black-2 display-block">
+							Hora de inicio:  23:00
+							</b>
+						<b class="fs-subhead tc-black-2 display-block">
+							Programa:  ---
+							</b>
+						</div>
+						<div class="card__actions">
+							<a href="#/cierre/{{folio2.id_servicio}}" class="btn btn--m btn--blue btn--flat" lx-ripple>Ir al servicio cierre</a>
+						</div>
+				</div>
+			</div>	
+			</a>	
+		</div>		
+		</div>
+
+	</lx-tab>
+
+	
+	<lx-tab heading="BUSES">
+		<div class="lt+">
+			<div class="card top-space">
+    		<lx-date-picker class="lx-date-picker__current-date" model="fechap4" label="Seleccione fecha" locale="es" fixed-label="true" icon="calendar" ></lx-date-picker>
+    		</div>
+    	
+		<div class="card top-space card__actions" ng-repeat="folio3 in folios3 | filter:{ 'driver': id, 'fecha': fechap4 } :true" >
+			<a href="#/serviciobus/{{folio3.id_servicio}}">
+				<div flex-container="row">
+				<div flex-container="column" style="width: 100%;">
+					<div flex-item>
+						<b class="fs-headline display-block">
+							{{folio3.id_servicio}}
+							</b>
+						<b class="fs-subhead tc-black-2 display-block">
+							Hora de servicio:  {{folio3.hora_original}}
+							</b>
+						<b class="fs-subhead tc-black-2 display-block">
+							Programa:  Servicio Bus
+							</b>
+						</div>
+						<div class="card__actions">
+							<a href="#/serviciobus/{{folio3.id_servicio}}" class="btn btn--m btn--blue btn--flat" lx-ripple>Ir al servicio buses</a>
+						</div>
+				</div>
+			</div>	
+			</a>	
+		</div>		
+		</div>
+
+	</lx-tab>
+</lx-tabs>

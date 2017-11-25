@@ -1,0 +1,83 @@
+    <script type="text/javascript">
+/*
+        //cordova.plugins.backgroundMode.enable();
+        var mins = 0;
+        var t;
+
+            $.get( "http://www.city-ex.cl/chv/site/getminutos" )
+            .done(function( data ) {
+            mins = parseInt(data);
+            });
+
+
+        function showPosition(position) {
+        $('#cx').val( position.coords.latitude);
+        $('#cy').val( position.coords.longitude);
+
+        }
+
+        function getgeo(count){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            //  alert(params);
+            if( ($('#cx').val()) && ($('#cy').val()) && ($('#id_driver').val()) )
+            $.post( "http://www.city-ex.cl/chv/site/guardarcoords", { coordx: $('#cx').val(), coordy: $('#cy').val(), driver: $('#id_driver').val() } );
+        } else {
+            console.log( "Geolocation is not supported by this browser.");
+        }
+        if (count < 3){
+        //count +=1;
+        if( ($('#cx').val()=='') || ($('#cy').val()=='') || ($('#id_driver').val()=='') )
+        setTimeout(getgeo, 1000, count++);
+        else
+        setTimeout(getgeo, mins*1000, count++);
+        }}
+
+        function para(){
+        var noofTimeOuts = setTimeout('');
+		for (var i = 0 ; i < noofTimeOuts ; i++) clearTimeout(i);
+        }
+
+
+        $(function() {
+        	para();
+            getgeo(0);
+        });
+*/
+        </script>
+<center>
+<form>
+	
+			<div class="card top-space" style="width: 90%;">
+			<h1>{{title}}</h1>
+			<div flex-container="row">
+
+				<div flex-container="column"  style="width: 100%;">
+					<div flex-item>
+						<lx-text-field label="Nombre" fixed-label="true" icon="account">
+							<input type="text" ng-model="driver.Nombre" ng-disabled = "true">
+          	  			</lx-text-field>
+						<lx-text-field label="Email" fixed-label="true" icon="email">
+							<input type="text" ng-model="driver.Email">
+          	  			</lx-text-field>
+						<lx-text-field label="Patente" fixed-label="true" icon="key">
+							<input type="password" ng-model="driver.passwd">
+							<input type="hidden" id="id_driver" value="{{driver.id_driver}}">
+							<input type="hidden" id="cx" value="">
+							<input type="hidden" id="cy" value="">
+          	  			</lx-text-field>
+						<hr>
+						</div>
+						<div class="card__actions">
+							<button ng-click="updateDriver(driver)" type="button" class="btn btn--blue btn--l btn--raised">
+								Guardar
+							</button>
+
+						</div>
+				</div>
+			</div>
+		</div>
+
+</form>
+</center>
+
